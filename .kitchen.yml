@@ -6,9 +6,9 @@ provisioner:
   name: shell
 
 platforms:
-  - name: nomadserver
+  - name: nomadclient
     driver:
-      box: nomadserver
+      box: nomadclient
       provider: virtualbox
 
 verifier:
