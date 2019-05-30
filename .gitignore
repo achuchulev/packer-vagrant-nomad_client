@@ -1,5 +1,6 @@
 # Cache objects
 packer_cache/
+.vagrant/
 
 # For built boxes
 *.box
