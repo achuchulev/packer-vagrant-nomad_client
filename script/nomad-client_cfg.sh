@@ -1,11 +1,13 @@
 #!/bin/bash
 
+mkdir -p /etc/nomad.d
+chmod a+w /etc/nomad.d
+
+mkdir -p /opt/nomad
+
 cat <<EOF > /etc/nomad.d/client.hcl
 
 data_dir  = "/opt/nomad"
-
-# Give the agent a unique name. Defaults to hostname
-name = "client"
 
 advertise {
   rpc = "{{ GetInterfaceIP \"eth0\" }}"
@@ -26,7 +28,6 @@ client {
     "driver.raw_exec" = "1"
     "driver.raw_exec.enable" = "1"
   }
-
 }
 EOF
 
