@@ -2,9 +2,7 @@
 
 cat <<EOF > /etc/nomad.d/client.hcl
 
-ata_dir  = "/opt/nomad"
-
-datacenter = "dc1"
+data_dir  = "/opt/nomad"
 
 # Give the agent a unique name. Defaults to hostname
 name = "client"

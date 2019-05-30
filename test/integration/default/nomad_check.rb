@@ -27,10 +27,10 @@ control 'nomad-port-listening' do
     its('protocols') { should include('tcp') }
     its('protocols') { should_not include('udp') }
   end
-  describe port(4648) do
-    it { should be_listening }
-    its('processes') {should include 'nomad'}
-    its('protocols') { should include('tcp') }
-    its('protocols') { should include('udp') }
+end
+
+control 'nomad-client-driver' do
+  describe package('docker') do
+    it { should be_installed }
   end
 end

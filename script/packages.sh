@@ -43,6 +43,10 @@ apt install -y vim ${APTARGS}
 # unzip
 apt install -y unzip ${APTARGS}
 
+# docker
+apt install -y docker.io ${APTARGS}
+usermod -G docker -a vagrant
+
 # Hide Ubuntu splash screen during OS Boot, so you can see if the boot hangs
 apt remove -y plymouth-theme-ubuntu-text
 sed -i 's/GRUB_CMDLINE_LINUX_DEFAULT="quiet"/GRUB_CMDLINE_LINUX_DEFAULT=""/' /etc/default/grub
