@@ -3,5 +3,7 @@ packer_cache/
 
 # For built boxes
 *.box
+*.vbox
 .kitchen/
 Gemfile.lock
+output-*/*
