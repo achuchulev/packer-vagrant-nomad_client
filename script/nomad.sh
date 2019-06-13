@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-NOMAD_VERSION=0.9.1
+NOMAD_VERSION=0.9.2
 
 echo "Installing Nomad..."
 

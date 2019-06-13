@@ -9,16 +9,12 @@ cat <<EOF > /etc/nomad.d/client.hcl
 
 data_dir  = "/opt/nomad"
 
-advertise {
-  rpc = "{{ GetInterfaceIP \"eth0\" }}"
-  http = "{{ GetInterfaceIP \"eth0\" }}"
-  serf = "{{ GetInterfaceIP \"eth0\" }}"
-}
+bind_addr = "0.0.0.0"
 
 # Enable the client
 client {
   enabled = true
-  servers = ["192.168.10.11:4647", "192.168.10.12:4647", "192.168.10.13:4647"]
+  servers = ["192.168.10.11", "192.168.10.12", "192.168.10.13"]
 
   options = {
     "driver.raw_exec" = "1"
