@@ -30,7 +30,6 @@ EOF
 
 # Enable & start nomad service
 systemctl enable nomad.service
-systemctl start nomad.service
 
 # Enable Nomad's CLI command autocomplete support
 nomad -autocomplete-install
