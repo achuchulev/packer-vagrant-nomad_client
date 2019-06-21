@@ -1,30 +1,48 @@
-control 'nomad-service' do
-  describe service('nomad') do
-    it { should be_installed }
-    it { should be_enabled }
-    it { should be_running }
+control 'os-family-version' do
+  describe os.family do
+    it { should eq 'debian' }
+  end
+  describe os.release do
+    it { should eq '16.04' }
+  end
+  describe os.name do
+    it { should eq 'ubuntu' }
   end
 end
 
-control 'nomad-config' do
-  describe file('/etc/nomad.d/client.hcl') do
+control 'nomad' do
+  describe file('/usr/bin/nomad') do
     it { should exist }
-    its('owner') { should eq 'root' }
-    its('mode') { should cmp '420' }
+    it { should be_file }
+    it { should_not be_directory }
+    it { should be_owned_by 'root' }
+    its('mode') { should cmp '00755' }
   end
 end
 
-control 'nomad-port-listening' do
-  describe port(4646) do
-    it { should be_listening }
-    its('processes') {should include 'nomad'}
-    its('protocols') { should include('tcp') }
-    its('protocols') { should_not include('udp') }
-  end
-end
-
-control 'nomad-client-driver' do
+control 'nomad-client-drivers' do
   describe package('docker.io') do
     it { should be_installed }
+  end
+  describe package('default-jre') do
+    it { should be_installed }
+  end
+end
+
+control 'cfssl' do
+  describe file('/usr/local/bin/cfssl') do
+    it { should exist }
+    its('owner') { should eq 'root' }
+    its('mode') { should cmp '493' }
+  end
+  describe file('/usr/local/bin/cfssl-certinfo') do
+    it { should exist }
+    its('owner') { should eq 'root' }
+    its('mode') { should cmp '493' }
+  end
+  describe file('/usr/local/bin/cfssljson') do
+    it { should exist }
+    its('owner') { should eq 'root' }
+    its('mode') { should cmp '493' }
   end
 end
