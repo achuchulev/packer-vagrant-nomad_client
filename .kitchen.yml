@@ -1,21 +1,22 @@
 ---
 driver:
-  name: vagrant
+  name: ec2
+  instance_type: t2.micro
+
+transport:
+  username: ubuntu
 
 provisioner:
   name: shell
 
 platforms:
-  - name: nomadclient
-    driver:
-      box: nomadclient
-      provider: virtualbox
+  - name: ubuntu
+    driver: 
+      image_id: ami-0e431df20c101e6b7
+      region: us-east-2
 
 verifier:
   name: inspec
 
 suites:
-  - name: default
-    verifier:
-      inspec_tests:
-        - test/integration/default
+- name: default

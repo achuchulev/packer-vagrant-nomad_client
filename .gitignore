@@ -6,5 +6,4 @@ packer_cache/
 *.box
 *.vbox
 .kitchen/
-Gemfile.lock
 output-*/*
